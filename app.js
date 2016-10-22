@@ -15,7 +15,6 @@ const expressValidator = require('express-validator');
  */
 const homeController = require('./controllers/home');
 const userController = require('./controllers/user');
-const apiController = require('./controllers/api');
 
 /**
  * Create Express server.
@@ -94,7 +93,14 @@ const passportConfig = require('./config/passport');
  */
 app.get('/', homeController.index);
 
-app.get('/single', homeController.getSingle);
+app.get('/story/:id', homeController.getSingle);
+app.get('/stories/:tag?', homeController.getList);
+app.get('/add-story', homeController.getAddStory);
+app.post('/add-story', homeController.postAddStory);
+app.get('/edit-story/:id', homeController.getEditStory);
+app.post('/edit-story/:id', homeController.postEditStory);
+app.get('/delete-story/:id', homeController.getDeleteStory);
+
 
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);
@@ -112,12 +118,6 @@ app.post('/account/profile', passportConfig.isAuthenticated, userController.post
 app.post('/account/password', passportConfig.isAuthenticated, userController.postUpdatePassword);
 app.post('/account/delete', passportConfig.isAuthenticated, userController.postDeleteAccount);
 app.get('/account/unlink/:provider', passportConfig.isAuthenticated, userController.getOauthUnlink);
-
-/**
- * API examples routes.
- */
-app.get('/api', apiController.getApi);
-
 
 /**
  * Error Handler.
