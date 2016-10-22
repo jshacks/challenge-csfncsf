@@ -3,18 +3,19 @@ extends layout
 
 block content
     div
-        h1 Problem
-        h4 Reported by ...
+        h1 #{story.title}
+        h4 Reported by #{story.author}
     .container
         .row
             .col-sm-6
-                div project picture
+                div 
+                    img(src=story.picture )
             .col-sm-6
-                p Descriere
+                p #{story.description}
                 ul
-                    li 97% finantat
-                    li Numar de sustinatori
-                    li Timp pana cauza expira
+                    li #{story.funded}
+                    li #{story.backers}
+                    li #{story.expires}
                 div
                     a.btn.btn-default Recompensa
                     a.btn.btn-default Trimite documentatie

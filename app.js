@@ -5,7 +5,10 @@ const errorHandler = require('errorhandler');
 const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo')(session);
 const path = require('path');
-const sass = require('node-sass-middleware');
+const bodyParser = require('body-parser');
+const flash = require('express-flash');
+const passport = require("passport");
+const expressValidator = require('express-validator');
 
 /**
  * Controllers (route handlers).
@@ -38,10 +41,10 @@ mongoose.connection.on('error', () => {
 app.set('port',  8080); //parseInt(process.env.PORT,10) ||
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'pug');
-app.use(sass({
-  src: path.join(__dirname, 'public'),
-  dest: path.join(__dirname, 'public')
-}));
+app.use(expressValidator());
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: true }));
+app.use(flash());
 app.use(session({
   resave: true,
   saveUninitialized: true,
@@ -51,10 +54,13 @@ app.use(session({
     autoReconnect: true
   })
 }));
+app.use(passport.initialize());
+app.use(passport.session());
 app.use((req, res, next) => {
   if (req.path === '/api/upload') {
     next();
   } else {
+   //next(); 
     lusca.csrf()(req, res, next);
   }
 });
@@ -70,7 +76,7 @@ app.use(function(req, res, next) {
       req.path !== '/login' &&
       req.path !== '/signup' &&
       !req.path.match(/^\/auth/) &&
-      !req.path.match(/\./)) {
+      !req.path.match(/\./)) { 
     req.session.returnTo = req.path;
   }
   next();
@@ -87,6 +93,9 @@ const passportConfig = require('./config/passport');
  * Primary app routes.
  */
 app.get('/', homeController.index);
+
+app.get('/single', homeController.getSingle);
+
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);
 app.get('/logout', userController.logout);
