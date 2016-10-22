@@ -1,40 +1,18 @@
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const userSchema = require('./User').schema;
+
 const storySchema = new mongoose.Schema({
   author: { type: Schema.ObjectId, ref: 'User'},
   title: String,
   description: String,
+  content: String,
   picture: String,
   funded: Number,
+  fundingTarget: Number,
   backers: Number,
   expires: Date,
-  comments: {
-    author: { type: Schema.ObjectId, ref: 'User'},
-    // replyTo: { type: Schema.ObjectId, ref: 'Comment'},
-    addedOn: Date,
-    text: String,
-    files: [
-      {
-        originalFilename: String,
-        filename: String,
-      }
-    ],
-    replies: []
-  },
-  answers: [
-    {
-      author:{ type: Schema.ObjectId, ref: 'User'},
-      text: String,
-    files: [
-      {
-        originalFilename: String,
-        filename: String,
-      }
-    ],
-    replies: []
-    }  
-  ]
+  status: String
 }, { timestamps: true });
 
 storySchema.pre('save', function (next) { // create nu save! 
