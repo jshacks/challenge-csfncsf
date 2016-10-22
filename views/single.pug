@@ -2,28 +2,47 @@ extends layout
 
 
 block content
-    div
-        h1 #{story.title}
-        h4 Reported by ...
-    .container
+    div.pt4
+        h1.center #{story.title}
+        h4.center Reported by ...
+    .container.pt4
         .row
-            .col-sm-6
-                div 
-                    img(src=story.picture )
-            .col-sm-6
-                p #{story.description}
-                ul
-                    li #{story.funded}
-                    li #{story.backers}
-                    li #{story.expires}
-                div
-                    a.btn.btn-default Recompensa
-                    a.btn.btn-default Trimite documentatie
+            .col-sm-10.col-sm-offset-1
+                .card.p3
+                    //- if story.picture
+                    .card-block
+                        .row
+                            .col-sm-10.col-sm-offset-1
+                                img.card-img-top.img-responsive.mx-auto(src=story.picture || 'https://images.unsplash.com/photo-1413781892741-08a142b23dfe?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=3a75efbce264f08740d8a087540ab8c9', alt='Card image cap', style='max-height:480px')
+                        .row
+                            .col-sm-10.col-sm-offset-1
+                                p.h2 Descriere
+                                p.card-text #{story.description}
+                        .row.mt2
+                            .col-sm-10.col-sm-offset-1
+                                .progress.mt2
+                                    .progress-bar(role='progressbar', aria-valuenow='100', aria-valuemin='0', aria-valuemax='100', style='width: 100%;')
+                                        span.sr-only 100% Complete
+                        .row.mt2
+                            .col-sm-10.col-sm-offset-1
+                                .row
+                                    .col-sm-4
+                                        p.h6.gray RAISED
+                                        p.mt2 #{story.funded ? story.fundend : '$7500'}
+                                    .col-sm-4
+                                        p.h6.gray BACKERS
+                                        p.mt2 #{story.backers ? story.backers : 650}
+                                    .col-sm-4
+                                        p.h6.gray EXPIRES
+                                        p.mt2 #{story.expires ? story.expires : '22/11/16'}
+                        .row.mt3
+                            .col-sm-6.col-sm-offset-3
+                                div.flex.justify-around
+                                    a.btn.black.bg-yellow.center Recompensa
+                                    a.btn.btn-default.ml1 Trimite documentatie
+                        .row.mt4
+                            .col-sm-10.col-sm-offset-1
+                                p.h2 Povestea
+                                p.card-text #{story.content}
 
-        .row
-            .col-sm-12
-                ul this is an inline list
-                    li Description
-                    li Backers
-                    li Discussion
-                    li Updates
+
