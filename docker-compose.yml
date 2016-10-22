@@ -1,0 +1,14 @@
+version: '2'
+services:
+  app: 
+    image: csfnaicsf
+    volumes:
+      - /home/andrei/workspace/csfnaicsf:/usr/src/app
+  mongo:
+    hostname: mongo
+    image: mongo:3.0.6
+    entrypoint: [ "/usr/bin/mongod", "--replSet", "rs", "--journal", "--smallfiles", "--rest" ]
+    ports:
+      - "27017:27017"
+      - "28017:28017"
+    restart: always
