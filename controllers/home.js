@@ -5,10 +5,30 @@ const Story = require('../models/Story');
  * Home page.
  */
 exports.index = (req, res) => {
-  res.render('home', {
-    title: 'Home',
-    messages: {
-      errors: {}
+  Story.find({}, (err, docs) => {
+    if (!err) {
+      
+      var vettedStories = docs.filter( (item) => {
+        return item.status == 'vetted';
+      });
+      
+      var financedStories =  docs.filter( (item) => {
+        return item.status == 'financed';
+      });
+      
+      var newStories =  docs.filter( (item) => {
+        return !item.status || item.status == 'new';
+      });
+      
+      res.render('home', {
+        title: 'Home',
+        vettedStories: vettedStories,
+        financedStories: financedStories,
+        newStories: newStories,
+        messages: {
+          errors: {}
+        }
+      });
     }
   });
 };

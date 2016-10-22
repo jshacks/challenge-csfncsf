@@ -13,217 +13,60 @@ block content
         h3.center Propuneri Verificate
     .container
         .row.mt4
-            .col-sm-3
-                .card
-                    img.card-img-top.img-responsive(src='//placehold.it/300', alt='Card image cap')
-                    .card-block
-                        h4.card-title Story title
-                        p.card-text
-                            | Some quick example text to build on the card title and make up the bulk of the card.
-                            a  Read More
-                        .progress.mt2
-                            .progress-bar(role='progressbar', aria-valuenow='60', aria-valuemin='0', aria-valuemax='100', style='width: 60%;')
-                                span.sr-only 60% Complete
-                        ul
-                            li money raised so far
-                            li nr backers
-                            li minimum bounty
-            .col-sm-3
-                .card
-                    img.card-img-top.img-responsive(src='//placehold.it/300', alt='Card image cap')
-                    .card-block
-                        h4.card-title Card title
-                        p.card-text
-                            | Some quick example text to build on the card title and make up the bulk of the card.
-                            a  Read More
-                        .progress.mt2
-                            .progress-bar(role='progressbar', aria-valuenow='60', aria-valuemin='0', aria-valuemax='100', style='width: 60%;')
-                                span.sr-only 60% Complete
-                        ul
-                            li money raised so far
-                            li nr backers
-                            li minimum bounty
-            .col-sm-3
-                .card
-                    img.card-img-top.img-responsive(src='//placehold.it/300', alt='Card image cap')
-                    .card-block
-                        h4.card-title Card title
-                        p.card-text
-                            | Some quick example text to build on the card title and make up the bulk of the card.
-                            a  Read More
-                        .progress.mt2
-                            .progress-bar(role='progressbar', aria-valuenow='60', aria-valuemin='0', aria-valuemax='100', style='width: 60%;')
-                                span.sr-only 60% Complete
-                        ul
-                            li money raised so far
-                            li nr backers
-                            li minimum bounty
-            .col-sm-3
-                .card
-                    img.card-img-top.img-responsive(src='//placehold.it/300', alt='Card image cap')
-                    .card-block
-                        h4.card-title Card title
-                        p.card-text
-                            | Some quick example text to build on the card title and make up the bulk of the card.
-                            a  Read More
-                        .progress.mt2
-                            .progress-bar(role='progressbar', aria-valuenow='60', aria-valuemin='0', aria-valuemax='100', style='width: 60%;')
-                                span.sr-only 60% Complete
-                        ul
-                            li money raised so far
-                            li nr backers
-                            li minimum bounty
+            each item in vettedStories
+                .col-sm-3
+                    .card
+                        img.card-img-top.img-responsive(src='//placehold.it/300', alt='Card image cap')
+                        .card-block
+                            h4.card-title #{item.title}
+                            p.card-text
+                                | #{item.description}
+                                a(href="/story/"+item._id)  Read More
+                            .progress.mt2
+                                .progress-bar(role='progressbar', aria-valuenow='60', aria-valuemin='0', aria-valuemax='100', style='width: 100%;')
+                                    span.sr-only 100% Complete
+                            ul
+                                li #{item.funded}
+                                li #{item.backers}
+                                li $ #{item.fundingTarget}
     .container.mt4
         h1.center Vezi ce povesti au fost sustinute
         h3.center Propuneri Finantate
     .container
         .row.mt4
-            .col-sm-3
-                .card
-                    img.card-img-top.img-responsive(src='//placehold.it/300', alt='Card image cap')
-                    .card-block
-                        h4.card-title Story title
-                        p.card-text
-                            | Some quick example text to build on the card title and make up the bulk of the card.
-                            a  Read More
-                        .progress.mt2
-                            .progress-bar(role='progressbar', aria-valuenow='100', aria-valuemin='0', aria-valuemax='100', style='width: 100%;')
-                                span.sr-only 100% Complete
-                        .row.mt2
-                          .col-sm-4.center
-                            p $5600
-                            p.h6.gray RAISED
-                          .col-sm-4.center
-                            p 750
-                            p.h6.gray BACKERS
-                          .col-sm-4
-                            p >$1000
-                            p.h6.gray THRESHOLD
-            .col-sm-3
-                .card
-                    img.card-img-top.img-responsive(src='//placehold.it/300', alt='Card image cap')
-                    .card-block
-                        h4.card-title Card title
-                        p.card-text
-                            | Some quick example text to build on the card title and make up the bulk of the card.
-                            a  Read More
-                        .progress.mt2
-                            .progress-bar(role='progressbar', aria-valuenow='100', aria-valuemin='0', aria-valuemax='100', style='width: 100%;')
-                                span.sr-only 100% Complete
-                        .row.mt2
-                          .col-sm-4.center
-                            p $5600
-                            p.h6.gray RAISED
-                          .col-sm-4.center
-                            p 750
-                            p.h6.gray BACKERS
-                          .col-sm-4
-                            p >$1000
-                            p.h6.gray THRESHOLD
-            .col-sm-3
-                .card
-                    img.card-img-top.img-responsive(src='//placehold.it/300', alt='Card image cap')
-                    .card-block
-                        h4.card-title Card title
-                        p.card-text
-                            | Some quick example text to build on the card title and make up the bulk of the card.
-                            a  Read More
-                        .progress.mt2
-                            .progress-bar(role='progressbar', aria-valuenow='100', aria-valuemin='0', aria-valuemax='100', style='width: 100%;')
-                                span.sr-only 100% Complete
-                        .row.mt2
-                          .col-sm-4.center
-                            p $5600
-                            p.h6.gray RAISED
-                          .col-sm-4.center
-                            p 750
-                            p.h6.gray BACKERS
-                          .col-sm-4
-                            p >$1000
-                            p.h6.gray THRESHOLD
-            .col-sm-3
-                .card
-                    img.card-img-top.img-responsive(src='//placehold.it/300', alt='Card image cap')
-                    .card-block
-                        h4.card-title Card title
-                        p.card-text
-                            | Some quick example text to build on the card title and make up the bulk of the card.
-                            a  Read More
-                        .progress.mt2
-                            .progress-bar(role='progressbar', aria-valuenow='100', aria-valuemin='0', aria-valuemax='100', style='width: 100%;')
-                                span.sr-only 100% Complete
-                        .row.mt2
-                          .col-sm-4.center
-                            p $5600
-                            p.h6.gray RAISED
-                          .col-sm-4.center
-                            p 750
-                            p.h6.gray BACKERS
-                          .col-sm-4
-                            p >$1000
-                            p.h6.gray THRESHOLD
+            each item in financedStories
+                .col-sm-3
+                    .card
+                        img.card-img-top.img-responsive(src='//placehold.it/300', alt='Card image cap')
+                        .card-block
+                            h4.card-title #{item.title}
+                            p.card-text
+                                | #{item.description}
+                                a(href="/story/"+item._id) Read More
+                            .progress.mt2
+                                .progress-bar(role='progressbar', aria-valuenow='100', aria-valuemin='0', aria-valuemax='100', style='width: 100%;')
+                                    span.sr-only 100% Complete
+                            .row.mt2
+                              .col-sm-4.center
+                                p #{item.funded}
+                                p.h6.gray RAISED
+                              .col-sm-4.center
+                                p #{item.backers}
+                                p.h6.gray BACKERS
+                              .col-sm-4
+                                p >$ #{item.fundingTarget}
+                                p.h6.gray THRESHOLD
     .container.mt4
         h1.center Ajuta la verificarea noilor propuneri
         h3.center Propuneri Noi
     .container
         .row.mt4
-            .col-sm-3
-                .card
-                    img.card-img-top.img-responsive(src='//placehold.it/300', alt='Card image cap')
-                    .card-block
-                        h4.card-title Story title
-                        p.card-text
-                            | Some quick example text to build on the card title and make up the bulk of the card.
-                            a  Read More
-                        .progress.mt2
-                            .progress-bar(role='progressbar', aria-valuenow='60', aria-valuemin='0', aria-valuemax='100', style='width: 60%;')
-                                span.sr-only 60% Complete
-                        ul
-                            li money raised so far
-                            li nr backers
-                            li minimum bounty
-            .col-sm-3
-                .card
-                    img.card-img-top.img-responsive(src='//placehold.it/300', alt='Card image cap')
-                    .card-block
-                        h4.card-title Card title
-                        p.card-text
-                            | Some quick example text to build on the card title and make up the bulk of the card.
-                            a  Read More
-                        .progress.mt2
-                            .progress-bar(role='progressbar', aria-valuenow='60', aria-valuemin='0', aria-valuemax='100', style='width: 60%;')
-                                span.sr-only 60% Complete
-                        ul
-                            li money raised so far
-                            li nr backers
-                            li minimum bounty
-            .col-sm-3
-                .card
-                    img.card-img-top.img-responsive(src='//placehold.it/300', alt='Card image cap')
-                    .card-block
-                        h4.card-title Card title
-                        p.card-text
-                            | Some quick example text to build on the card title and make up the bulk of the card.
-                            a  Read More
-                        .progress.mt2
-                            .progress-bar(role='progressbar', aria-valuenow='60', aria-valuemin='0', aria-valuemax='100', style='width: 60%;')
-                                span.sr-only 60% Complete
-                        ul
-                            li money raised so far
-                            li nr backers
-                            li minimum bounty
-            .col-sm-3
-                .card
-                    img.card-img-top.img-responsive(src='//placehold.it/300', alt='Card image cap')
-                    .card-block
-                        h4.card-title Card title
-                        p.card-text
-                            | Some quick example text to build on the card title and make up the bulk of the card.
-                            a  Read More
-                        .progress.mt2
-                            .progress-bar(role='progressbar', aria-valuenow='60', aria-valuemin='0', aria-valuemax='100', style='width: 60%;')
-                                span.sr-only 60% Complete
-                        ul
-                            li money raised so far
-                            li nr backers
-                            li minimum bounty
+            each item in newStories
+                .col-sm-3
+                    .card
+                        img.card-img-top.img-responsive(src='//placehold.it/300', alt='Card image cap')
+                        .card-block
+                            h4.card-title #{item.title}
+                            p.card-text
+                                | #{item.description}
+                                a(href="/story/"+item._id)  Read More
