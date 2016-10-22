@@ -8,23 +8,21 @@
         span.icon-bar
       a.navbar-brand(href='/')
         i.fa.fa-cube
-        | Project name
+        | Csf n-ai csf
     .collapse.navbar-collapse
       ul.nav.navbar-nav
-        li(class=(title == 'Home') ? 'active' : undefined)
-          a(href='/') Home
-        li(class=(title == 'API Examples') ? 'active' : undefined)
-          a(href='/api') API Examples
-        li(class=(title == 'Contact') ? 'active' : undefined)
-          a(href='/contact') Contact
+        li(class=(title == 'Adauga') ? 'active' : undefined)
+          a(href='/add-story') Adauga
+        li(class=(title == 'Descopera') ? 'active' : undefined)
+          a(href='/stories') Descopera
         li
-          a(href='/status') Status
+          a(href='/about') Despre
       ul.nav.navbar-nav.navbar-right
         if !user
-          li(class=(title == 'Login') ? 'active' : undefined)
-            a(href='/login') Login
-          li(class=(title == 'Create Account') ? 'active' : undefined)
-            a(href='/signup') Create Account
+          li(class=(title == 'Autentifica-te') ? 'active' : undefined)
+            a(href='/login') Autentifica-te
+          li(class=(title == 'Cont Nou') ? 'active' : undefined)
+            a(href='/signup') Cont Nou
         else
           li.dropdown(class=(title == 'Account Management') ? 'active' : undefined)
             a.dropdown-toggle(href='#', data-toggle='dropdown')
@@ -36,7 +34,7 @@
               i.caret
             ul.dropdown-menu
               li
-                a(href='/account') My Account
+                a(href='/account') Contul Meu
               li.divider
               li
-                a(href='/logout') Logout
+                a(href='/logout') Deconectare
