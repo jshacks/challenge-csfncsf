@@ -2,7 +2,7 @@ extends ../layout
 
 block content
   .page-header
-    h3 Profile Information
+    h3 Profilul tau
 
   form.form-horizontal(action='/account/profile', method='POST')
     input(type='hidden', name='_csrf', value=_csrf)
@@ -11,11 +11,11 @@ block content
       .col-sm-7
         input.form-control(type='email', name='email', id='email', value=user.email)
     .form-group
-      label.col-sm-3.control-label(for='name') Name
+      label.col-sm-3.control-label(for='name') Parola
       .col-sm-7
         input.form-control(type='text', name='name', id='name', value=user.profile.name)
     .form-group
-      label.col-sm-3.control-label Gender
+      label.col-sm-3.control-label Sex
       .col-sm-6
         label.radio.col-sm-3
           input(type='radio', checked=user.profile.gender=='male', name='gender', value='male', data-toggle='radio')
@@ -27,7 +27,7 @@ block content
           input(type='radio', checked=user.profile.gender=='other', name='gender', value='other', data-toggle='radio')
           span Other
     .form-group
-      label.col-sm-3.control-label(for='location') Location
+      label.col-sm-3.control-label(for='location') Locatie
       .col-sm-7
         input.form-control(type='text', name='location', id='location', value=user.profile.location)
     .form-group
@@ -42,70 +42,70 @@ block content
       .col-sm-offset-3.col-sm-4
         button.btn.btn.btn-primary(type='submit')
           i.fa.fa-pencil
-          | Update Profile
+          | Salveaza profil
 
   .page-header
-    h3 Change Password
+    h3 Modificare parola
 
   form.form-horizontal(action='/account/password', method='POST')
     input(type='hidden', name='_csrf', value=_csrf)
     .form-group
-      label.col-sm-3.control-label(for='password') New Password
+      label.col-sm-3.control-label(for='password') Parola noua
       .col-sm-7
         input.form-control(type='password', name='password', id='password')
     .form-group
-      label.col-sm-3.control-label(for='confirmPassword') Confirm Password
+      label.col-sm-3.control-label(for='confirmPassword') Confirmare parola
       .col-sm-7
         input.form-control(type='password', name='confirmPassword', id='confirmPassword')
     .form-group
       .col-sm-offset-3.col-sm-4
         button.btn.btn-primary(type='submit')
           i.fa.fa-lock
-          | Change Password
+          | Modificare parola
 
   .page-header
-    h3 Delete Account
+    h3 Stergere cont
 
   form.form-horizontal(action='/account/delete', method='POST')
     .form-group
-      p.col-sm-offset-3.col-sm-4 You can delete your account, but keep in mind this action is irreversible.
+      p.col-sm-offset-3.col-sm-4 Aceasta actiune este ireversibila.
       input(type='hidden', name='_csrf', value=_csrf)
       .col-sm-offset-3.col-sm-4
         button.btn.btn-danger(type='submit')
           i.fa.fa-trash
-          | Delete my account
+          | Sterge cont
 
   .page-header
-    h3 Linked Accounts
+    h3 Profile
   .form-horizontal
     .form-group
       .col-sm-offset-3.col-sm-4
         if user.instagram
-          p: a.text-danger(href='/account/unlink/instagram') Unlink your Instagram account
+          p: a.text-danger(href='/account/unlink/instagram') Deconecteaza profilul de Instagram
         else
-          p: a(href='/auth/instagram') Link your Instagram account
+          p: a(href='/auth/instagram') Conecteaza profilul de Instagram
       .col-sm-offset-3.col-sm-4
         if user.google
-          p: a.text-danger(href='/account/unlink/google') Unlink your Google account
+          p: a.text-danger(href='/account/unlink/google') Deconecteaza profilul de Google
         else
-          p: a(href='/auth/google') Link your Google account
+          p: a(href='/auth/google') Conecteaza profilul de Google
       .col-sm-offset-3.col-sm-4
         if user.facebook
-          p: a.text-danger(href='/account/unlink/facebook') Unlink your Facebook account
+          p: a.text-danger(href='/account/unlink/facebook') Deconecteaza profilul de Facebook
         else
-          p: a(href='/auth/facebook') Link your Facebook account
+          p: a(href='/auth/facebook') Conecteaza profilul de Facebook
       .col-sm-offset-3.col-sm-4
         if user.twitter
-          p: a.text-danger(href='/account/unlink/twitter') Unlink your Twitter account
+          p: a.text-danger(href='/account/unlink/twitter') Deconecteaza profilul de Twitter
         else
-          p: a(href='/auth/twitter') Link your Twitter account
+          p: a(href='/auth/twitter') Conecteaza profilul de Twitter
       .col-sm-offset-3.col-sm-4
         if user.github
-          p: a.text-danger(href='/account/unlink/github') Unlink your GitHub account
+          p: a.text-danger(href='/account/unlink/github') Deconecteaza profilul de GitHub
         else
-          p: a(href='/auth/github') Link your GitHub account
+          p: a(href='/auth/github') Conecteaza profilul de GitHub
       .col-sm-offset-3.col-sm-4
         if user.linkedin
-          p: a.text-danger(href='/account/unlink/linkedin') Unlink your LinkedIn account
+          p: a.text-danger(href='/account/unlink/linkedin') Deconecteaza profilul de LinkedIn
         else
-          p: a(href='/auth/linkedin') Link your LinkedIn account
+          p: a(href='/auth/linkedin') Conecteaza profilul de LinkedIn
