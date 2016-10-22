@@ -1,2 +1,2 @@
 cd /usr/src/app
-nodemon app.js
+node app.js

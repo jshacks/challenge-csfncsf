@@ -1,13 +1,18 @@
 version: '2'
 services:
   app: 
-    image: csfnaicsf
+    build: ./
     volumes:
       - /home/andrei/workspace/csfnaicsf:/usr/src/app
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mongo
+    links:
+      - mongo:mongo
   mongo:
     hostname: mongo
-    image: mongo:3.0.6
-    entrypoint: [ "/usr/bin/mongod", "--replSet", "rs", "--journal", "--smallfiles", "--rest" ]
+    build: ../mongo
     ports:
       - "27017:27017"
       - "28017:28017"

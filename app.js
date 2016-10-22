@@ -1,4 +1,3 @@
-
 const express = require("express");
 const session = require('express-session');
 const lusca = require('lusca');
@@ -6,7 +5,7 @@ const errorHandler = require('errorhandler');
 const mongoose = require('mongoose');
 const MongoStore = require('connect-mongo')(session);
 const path = require('path');
-
+const sass = require('node-sass-middleware');
 
 /**
  * Controllers (route handlers).
@@ -36,9 +35,13 @@ mongoose.connection.on('error', () => {
 /**
  * Express configuration.
  */
-app.set('port', process.env.PORT || 3000);
+app.set('port',  8080); //parseInt(process.env.PORT,10) ||
 app.set('views', path.join(__dirname, 'views'));
-app.set('view engine', 'html');
+app.set('view engine', 'pug');
+app.use(sass({
+  src: path.join(__dirname, 'public'),
+  dest: path.join(__dirname, 'public')
+}));
 app.use(session({
   resave: true,
   saveUninitialized: true,
@@ -116,7 +119,7 @@ app.use(errorHandler());
  * Start Express server.
  */
 app.listen(app.get('port'), () => {
-  console.log('%s Express server listening on port %d in %s mode.', chalk.green('✓'), app.get('port'), app.get('env'));
+  console.log('Express server listening on port %d in %s mode.', app.get('port'), app.get('env'));
 });
 
 module.exports = app;
