@@ -9558,7 +9558,7 @@ button.close {
   background-color: #ff4136; }
 
 .bg-fuchsia {
-  background-color: #f012be; }
+  background-color: #f012be !important; }
 
 .bg-purple {
   background-color: #b10dc9; }
@@ -10990,9 +10990,6 @@ p {
   box-shadow: 0 1px 5px rgba(0, 0, 0, 0.15); }
   .navbar-default .navbar-nav > li > a {
     transition: color 0.4s cubic-bezier(0.24, 0.45, 0.46, 0.92); }
-
-.btn-header {
-  background-color: #fbfb4f; }
 
 .card {
   position: relative;
