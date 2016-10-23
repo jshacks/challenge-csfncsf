@@ -11,21 +11,21 @@ const storySchema = new mongoose.Schema({
   funded: Number,
   fundingTarget: Number,
   backers: Number,
+  likes: Number,
   expires: Date,
   status: String
 }, { timestamps: true });
 
-storySchema.pre('save', function (next) { // create nu save! 
-
-  const story = this;
-  var nextMonth = new Date();
-  nextMonth.setDate(nextMonth.getDate() + 30);
-  
-  story.expires = nextMonth;
-  next();
-  
+storySchema.pre('save', function (next) {
+    if (this.isNew) {
+      var story = this;
+      var nextMonth = new Date();
+      nextMonth.setDate(nextMonth.getDate() + 30);
+      
+      story.expires = nextMonth;
+    } 
+    next();
 });
-
 
 const Story = mongoose.model('Story', storySchema);
 

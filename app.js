@@ -100,7 +100,7 @@ app.post('/add-story', homeController.postAddStory);
 app.get('/edit-story/:id', homeController.getEditStory);
 app.post('/edit-story/:id', homeController.postEditStory);
 app.get('/delete-story/:id', homeController.getDeleteStory);
-
+app.get('/vote-story/:id', homeController.getVoteStory);
 
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);

@@ -4,7 +4,7 @@ extends layout
 block content
     div.pt4
         h1.center #{story.title}
-        h4.center Reported by ...
+        h4.center #{story.author.profile.name}
     .container.pt4
         .row
             .col-sm-10.col-sm-offset-1
@@ -38,6 +38,7 @@ block content
                         .row.mt3
                             .col-sm-6.col-sm-offset-3
                                 div.flex.justify-around
+                                    a.btn.white.bg-fuchsia.center(href="/vote-story/"+ story._id) Sustine
                                     a.btn.black.bg-yellow.center Recompensa
                                     a.btn.btn-default.ml1 Trimite documentatie
                         .row.mt4
