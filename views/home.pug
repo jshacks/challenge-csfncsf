@@ -27,9 +27,9 @@ block content
                                     .progress-bar(role='progressbar', aria-valuenow=item.progress, aria-valuemin='0', aria-valuemax='100', style='width: '+ item.progress +'%;')
                                         span.sr-only #{item.progress}% Complete
                                 ul
-                                    li $#{item.funded}
-                                    li #{item.backers}
-                                    li $#{item.fundingTarget}
+                                    li RAISED $#{item.funded}
+                                    li BACKERS #{item.backers}
+                                    li TARGET $#{item.fundingTarget}
     if fundedStories && fundedStories.length
         .container.mt4
             h1.center Vezi ce povesti au fost sustinute
