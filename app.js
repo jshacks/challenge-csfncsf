@@ -56,10 +56,9 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 app.use((req, res, next) => {
-  if (req.path === '/api/upload') {
+  if (req.path === '/api/upload' || req.path.startsWith('/donate/')) {
     next();
   } else {
-   //next(); 
     lusca.csrf()(req, res, next);
   }
 });
@@ -94,6 +93,7 @@ const passportConfig = require('./config/passport');
 app.get('/', homeController.index);
 
 app.get('/story/:id', homeController.getSingle);
+app.get('/about', homeController.getAbout);
 app.get('/stories/:tag?', homeController.getList);
 app.get('/add-story', homeController.getAddStory);
 app.post('/add-story', homeController.postAddStory);

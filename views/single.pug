@@ -2,6 +2,21 @@ extends layout
 
 
 block content
+    #pay-modal.modal.fade(role='dialog')
+        .modal-dialog
+            .modal-content
+                .modal-header
+                    button.close(type='button', data-dismiss='modal') ×
+                    h4.modal-title Doneaza pentru #{story.title}
+                .modal-body
+                    p Introdu suma pe care doresti sa o donezi
+                    .form-group
+                        input#amount(type="number" value="100" name="amount")
+                        span RON
+                .modal-footer
+                    button.btn.btn-primary(type='button', onclick="window.location = '/donate/"+story._id+"?amount='+document.getElementById('amount').value") Doneaza
+                    button.btn.btn-default(type='button', data-dismiss='modal') Close
+
     div.pt4
         h1.center #{story.title}
         h4.center #{story.author.profile.name}
@@ -42,7 +57,7 @@ block content
                                     a.btn.white.bg-fuchsia.center(href="/vote-story/"+ story._id)
                                         i.fa.fa-heart
                                         | #{story.likes.length}
-                                    a.btn.black.bg-yellow.center Recompensa
+                                    a.btn.black.bg-yellow.center(href="#" data-toggle="modal" data-target="#pay-modal") Recompensa
                                     a.btn.btn-default.ml1 Trimite documentatie
                         .row.mt4
                             .col-sm-10.col-sm-offset-1

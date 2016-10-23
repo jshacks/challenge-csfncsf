@@ -12,6 +12,11 @@
       "from": "bcrypt-nodejs@latest",
       "resolved": "https://registry.npmjs.org/bcrypt-nodejs/-/bcrypt-nodejs-0.0.3.tgz"
     },
+    "bluebird": {
+      "version": "3.4.6",
+      "from": "bluebird@latest",
+      "resolved": "https://registry.npmjs.org/bluebird/-/bluebird-3.4.6.tgz"
+    },
     "body-parser": {
       "version": "1.15.2",
       "from": "body-parser@latest",

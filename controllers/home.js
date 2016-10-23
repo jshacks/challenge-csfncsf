@@ -1,8 +1,8 @@
 const Story = require('../models/Story');
 const User = require("../models/User");
 const fs = require("fs");
-const mobilpay = require('mobilpay-node');
-const constants = mobilpay.constants;
+const mobilpay = require('../payment/order.js');
+
 
 /**
  * GET /
@@ -38,6 +38,10 @@ exports.index = (req, res) => {
     }
   });
 };
+
+exports.getAbout = (req, res) => {
+  res.render('about');
+}
 
 exports.getSingle = (req, res) => {
   Story.findOne({_id:req.params.id}).exec((err, doc) => {
@@ -127,46 +131,23 @@ exports.getVoteStory = (req, res) => {
 }
 
 exports.getDonate = (req, res) => {
-  console.log(req.params.id)
-  var MobilPay = new mobilpay.Mobilpay({
-    signature: 'VEYA-Q5FD-B69Q-76LQ-H3XU',
-    sandbox: true,
-    publicKeyFile: __dirname+'/../certs/PUBLIC_KEY.pem',
-    privateKeyFile: __dirname+'/../certs/sandbox.VEYA-Q5FD-B69Q-76LQ-H3XUprivate.key'
-  });
-  var paymentRequest = MobilPay.createRequest({
-    amount: 100,
-    merchantId: Math.random(),
-    customerId: Math.random(),
-    billingAddress: {
-      type: constants.ADDRESS_TYPE_PERSON,
-      firstName: '',
-      lastName: '',
-      email: '',
-      address: '',
-      mobilePhone: ''
-    },
-    shippingAddress: {
-      type: constants.ADDRESS_TYPE_PERSON,
-      firstName: '',
-      lastName: '',
-      email: '',
-      address: '',
-      mobilePhone: ''
-    },
-    confirmUrl: 'http://csfnaicsf.cf/donate/'+req.params.id,
-    returnUrl: 'http://csfnaicsf.cf/story/'+req.params.id,
-  });
-  console.log(paymentRequest);
-  MobilPay.prepareRedirectData(paymentRequest)
-  .then(function(result) {
-    res.render('mobilpay', result);
-    
-  })
+  console.log(req.query.amount);
+  var payReq = mobilpay.getRequest(req.params.id, req.query.amount);
+  payReq.url = 'http://sandboxsecure.mobilpay.ro/'
+  res.render('mobilpay', payReq);
 };
 
 exports.postDonate = (req, res) => {
-  //response mobilpay
+  var data = mobilpay.decodeResponse(req.body).then((result) => {
+    Story.findOne({_id:req.params.id}, (err, story) => {
+      if (!err) {
+        story.funded = parseInt(story.funded) + parseInt(result.order.invoice.$.amount);
+        story.backers = parseInt(story.backers) + 1;
+        story.save();
+      }
+    });
+  });
+  res.send('OK');
 };
 
 exports.postFundStory = (req, res) => {
