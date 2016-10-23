@@ -16,7 +16,7 @@ block content
             each item in vettedStories
                 .col-sm-3
                     .card
-                        img.card-img-top.img-responsive(src='//placehold.it/300', alt='Card image cap')
+                        img.card-img-top.img-responsive(src='/content/img/'+item._id+'.jpg', alt=item.title)
                         .card-block
                             h4.card-title #{item.title}
                             p.card-text
@@ -37,7 +37,7 @@ block content
             each item in financedStories
                 .col-sm-3
                     .card
-                        img.card-img-top.img-responsive(src='//placehold.it/300', alt='Card image cap')
+                        img.card-img-top.img-responsive(src='/content/img/'+item._id+'.jpg', alt=item.title)
                         .card-block
                             h4.card-title #{item.title}
                             p.card-text
@@ -64,7 +64,7 @@ block content
             each item in newStories
                 .col-sm-3
                     .card
-                        img.card-img-top.img-responsive(src='//placehold.it/300', alt='Card image cap')
+                        img.card-img-top.img-responsive(src='/content/img/'+item._id+'.jpg', alt=item.title)
                         .card-block
                             h4.card-title #{item.title}
                             p.card-text

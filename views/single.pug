@@ -13,7 +13,7 @@ block content
                     .card-block
                         .row
                             .col-sm-10.col-sm-offset-1
-                                img.card-img-top.img-responsive.mx-auto(src=story.picture || 'https://images.unsplash.com/photo-1413781892741-08a142b23dfe?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=3a75efbce264f08740d8a087540ab8c9', alt='Card image cap', style='max-height:480px')
+                                img.card-img-top.img-responsive.mx-auto(src='/content/img/'+story._id+'.jpg' || 'https://images.unsplash.com/photo-1413781892741-08a142b23dfe?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=3a75efbce264f08740d8a087540ab8c9', alt='Card image cap', style='max-height:480px')
                         .row
                             .col-sm-10.col-sm-offset-1
                                 p.h2 Descriere
@@ -28,7 +28,7 @@ block content
                                 .row
                                     .col-sm-4
                                         p.h6.gray RAISED
-                                        p.mt2 #{story.funded ? story.fundend : '$7500'}
+                                        p.mt2 #{story.funded ? story.funded : '$7500'}
                                     .col-sm-4
                                         p.h6.gray BACKERS
                                         p.mt2 #{story.backers ? story.backers : 650}
