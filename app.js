@@ -101,7 +101,8 @@ app.get('/edit-story/:id', homeController.getEditStory);
 app.post('/edit-story/:id', homeController.postEditStory);
 app.get('/delete-story/:id', homeController.getDeleteStory);
 app.get('/vote-story/:id', homeController.getVoteStory);
-
+app.get('/donate/:id', homeController.getDonate);
+app.post('/donate/:id', homeController.postDonate);
 app.get('/login', userController.getLogin);
 app.post('/login', userController.postLogin);
 app.get('/logout', userController.logout);

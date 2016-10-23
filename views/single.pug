@@ -13,7 +13,7 @@ block content
                     .card-block
                         .row
                             .col-sm-10.col-sm-offset-1
-                                img.card-img-top.img-responsive.mx-auto(src='/content/img/'+story._id+'.jpg' || 'https://images.unsplash.com/photo-1413781892741-08a142b23dfe?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=3a75efbce264f08740d8a087540ab8c9', alt='Card image cap', style='max-height:480px')
+                                img.card-img-top.img-responsive.mx-auto(src='/content/img/'+story._id+'.jpg' || 'https://images.unsplash.com/photo-1413781892741-08a142b23dfe?ixlib=rb-0.3.5&q=80&fm=jpg&crop=entropy&cs=tinysrgb&s=3a75efbce264f08740d8a087540ab8c9', alt=story.title, style='max-height:480px')
                         .row
                             .col-sm-10.col-sm-offset-1
                                 p.h2 Descriere
@@ -21,29 +21,47 @@ block content
                         .row.mt2
                             .col-sm-10.col-sm-offset-1
                                 .progress.mt2
-                                    .progress-bar(role='progressbar', aria-valuenow='100', aria-valuemin='0', aria-valuemax='100', style='width: 100%;')
-                                        span.sr-only 100% Complete
+                                    .progress-bar(role='progressbar', aria-valuenow=story.progress, aria-valuemin='0', aria-valuemax='100', style='width: '+story.progress+'%;')
+                                        span.sr-only #{story.progress}% Complete
                         .row.mt2
                             .col-sm-10.col-sm-offset-1
                                 .row
                                     .col-sm-4
                                         p.h6.gray RAISED
-                                        p.mt2 #{story.funded ? story.funded : '$7500'}
+                                        p.mt2 $#{story.funded}
                                     .col-sm-4
-                                        p.h6.gray BACKERS
-                                        p.mt2 #{story.backers ? story.backers : 650}
+                                        if story.backers
+                                            p.h6.gray BACKERS
+                                            p.mt2 #{story.backers}
                                     .col-sm-4
                                         p.h6.gray EXPIRES
                                         p.mt2 #{story.expires ? story.expires : '22/11/16'}
                         .row.mt3
                             .col-sm-6.col-sm-offset-3
                                 div.flex.justify-around
-                                    a.btn.white.bg-fuchsia.center(href="/vote-story/"+ story._id) Sustine
+                                    a.btn.white.bg-fuchsia.center(href="/vote-story/"+ story._id)
+                                        i.fa.fa-heart
+                                        | #{story.likes.length}
                                     a.btn.black.bg-yellow.center Recompensa
                                     a.btn.btn-default.ml1 Trimite documentatie
                         .row.mt4
                             .col-sm-10.col-sm-offset-1
                                 p.h2 Povestea
-                                p.card-text #{story.content}
+                                p.card-text !{story.content}
+                        .row.mt2
+                            .col-sm-10.col-sm-offset-1
+                                #disqus_thread
+                                script.
+                                    var disqus_config = function () {
+                                        this.page.url = canonicalUrl;  
+                                        this.page.identifier = story._id;
+                                    };
+                                    
+                                    (function() { // DON'T EDIT BELOW THIS LINE
+                                    var d = document, s = d.createElement('script');
+                                    s.src = '//csfnaicsf-cf.disqus.com/embed.js';
+                                    s.setAttribute('data-timestamp', +new Date());
+                                    (d.head || d.body).appendChild(s);
+                                    })();
 
 

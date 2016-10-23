@@ -11,7 +11,7 @@ const storySchema = new mongoose.Schema({
   funded: Number,
   fundingTarget: Number,
   backers: Number,
-  likes: Number,
+  likes: [{ type: Schema.ObjectId, ref: 'User'}],
   expires: Date,
   status: String
 }, { timestamps: true });

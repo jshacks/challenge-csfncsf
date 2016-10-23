@@ -1,0 +1,5 @@
+form(method="POST" action=url)
+    input(type="hidden" name="env_key" value=envKey)
+    input(type="hidden" name="data" value=data)
+script.
+    document.forms[0].submit();

@@ -8,15 +8,17 @@ block content
             each item in stories
                 .col-sm-3
                     .card
-                        img.card-img-top.img-responsive(src='//placehold.it/300', alt='Card image cap')
+                        a(href="/story/"+item._id)
+                            img.card-img-top.img-responsive(src='/content/img/'+item._id+'.jpg', alt=item.title)
                         .card-block
-                            h4.card-title #{item.title}
+                            a(href="/story/"+item._id)
+                                h4.card-title #{item.title}
                             p.card-text
                                 | #{item.description}
                                 a(href="/story/"+item._id)  Citeste mai mult
                             if typeof item.status != 'undefined' && item.status != 'new'
                                 .progress.mt2
-                                    .progress-bar(role='progressbar', aria-valuenow=item.progress, aria-valuemin='0', aria-valuemax='100', style='width: '+item.progress+';')
+                                    .progress-bar(role='progressbar', aria-valuenow=item.progress, aria-valuemin='0', aria-valuemax='100', style='width: '+item.progress+'%;')
                                         span.sr-only #{item.progress}% Complete
                                 ul
                                     li #{item.funded}
