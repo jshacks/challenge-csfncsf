@@ -2,11 +2,11 @@ extends layout
 
 
 block content
-    .container
+    .container.pt4
             .row
                 .col-sm-12
                 h1 #{title}
-            .row
+            .row.mt1
                 .col-sm-12
                     form.form-horizontal(method="POST")
                         input(type='hidden', name='_csrf', value=_csrf)
